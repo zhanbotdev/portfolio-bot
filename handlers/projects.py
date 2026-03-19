@@ -1,19 +1,21 @@
 from aiogram import types, Dispatcher
-from keyboards.menu import main_menu_kb
+
+async def show_projects(message: types.Message):
+    text = (
+        "🧠 *Мои проекты:*\n\n"
+        "1️⃣ [Order Bot](https://t.me/order_requests_demo_bot)\n"
+        "— Бот-магазин для приёма заказов.\n\n"
+        "2️⃣ [Quiz Bot](https://t.me/zhan_quiz_demo_bot)\n"
+        "— Викторина с вопросами и подсчётом очков.\n\n"
+        "3️⃣ [Этот бот](https://t.me/ZhandosPortfolioBot)\n"
+        "— Презентация моих навыков Telegram-разработчика."
+    )
+
+    await message.answer(text, parse_mode="Markdown")
+
 
 def register_handlers(dp: Dispatcher):
-    @dp.message_handler(lambda m: m.text and m.text.startswith('⚙️ Мои проекты'))
-    async def projects_handler(message: types.Message):
-        text = (
-            "🔹 Мои проекты:\n\n"
-            "1️⃣ Бот-игра “Умники и умницы”\n"
-            "• Викторина с подсчётом очков, таймером и режимом для нескольких игроков.\n"
-            "• Технологии: Python, aiogram, SQLite.\n"
-            "🔗 Demo: напиши сюда ссылку на бот\n\n"
-            "2️⃣ Магазин-бот “Jamto Store”\n"
-            "• Каталог, корзина, оформление заказа, уведомления администратору.\n"
-            "• Технологии: Python, aiogram, FSM, SQLite.\n"
-            "🔗 Demo: напиши сюда ссылку на бот\n\n"
-            "Если хочешь — могу отправить подробное описание по каждому проекту и ссылку на исходники."
-        )
-        await message.answer(text, reply_markup=main_menu_kb)
+    dp.register_message_handler(
+        show_projects,
+        lambda message: message.text == "⚙️ Мои проекты"
+    )

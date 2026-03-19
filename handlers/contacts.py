@@ -6,9 +6,10 @@ def register_handlers(dp: Dispatcher):
     async def contacts_handler(message: types.Message):
         text = (
             "📞 Контакты:\n"
-            "Telegram: @YourUsername\n"
-            "GitHub: https://github.com/yourname\n"
+            "Telegram: @Zhandos281091\n"
+            "WhatsApp: +77018477331\n"
+            "GitHub: https://github.com/zhanbotdev\n"
             "Freelance: https://freelancehunt.com/yourpage\n\n"
-            "PS: Ты сам добавишь сюда реальные ссылки и никнеймы в config.py."
+           # "PS: Ты сам добавишь сюда реальные ссылки и никнеймы в config.py."
         )
         await message.answer(text, reply_markup=main_menu_kb)

@@ -1,6 +1,10 @@
 import os
+from dotenv import load_dotenv
 
-ADMIN_ID = int(os.getenv('ADMIN_ID', '0'))  # ваш числовой Telegram ID
+# Загружаем переменные окружения из .env
+load_dotenv()
 
 # Настройки проекта
-BOT_NAME = "Жандос | Telegram Bot Developer"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_ID = int(os.getenv("ADMIN_ID", "0"))
+BOT_NAME = os.getenv("BOT_NAME", "Жандос | Telegram Bot Developer")
